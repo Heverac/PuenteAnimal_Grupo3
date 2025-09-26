@@ -15,6 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import com.example.puenteanimal_grupo3.R
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.TopAppBar
+import androidx.compose.ui.Alignment
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -32,7 +33,10 @@ fun HomeScreen() {
                 .padding(innerPadding)
                 .fillMaxSize()
                 .padding(16.dp),
-            verticalArrangement = Arrangement.spacedBy(20.dp)
+            //Distancia vertical entre elementos
+            verticalArrangement = Arrangement.spacedBy(20.dp),
+            //Alineamiento horizontal de los elementos
+            horizontalAlignment = Alignment.CenterHorizontally
         ) {
             //Texto básico para mostrar en pantalla
             Text(text = "¡Bienvenido a nuestro santuario!")
