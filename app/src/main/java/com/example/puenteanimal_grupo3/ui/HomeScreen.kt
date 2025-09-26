@@ -32,7 +32,7 @@ fun HomeScreen() {
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize()
-                .padding(16.dp),
+                .padding(30.dp),
             //Distancia vertical entre elementos
             verticalArrangement = Arrangement.spacedBy(20.dp),
             //Alineamiento horizontal de los elementos
