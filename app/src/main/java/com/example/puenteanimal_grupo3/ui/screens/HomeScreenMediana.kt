@@ -1,4 +1,4 @@
-package com.example.puenteanimal_grupo3.ui
+package com.example.puenteanimal_grupo3.ui.screens
 
 
 import androidx.compose.foundation.Image
@@ -19,12 +19,12 @@ import androidx.compose.ui.Alignment
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreenMediana() {
     Scaffold(
         //Agrega el texto que se desee en la parte de arriba de la pantalla, en este caso
         //el nombre de la aplicacion
         topBar = {
-            TopAppBar(title = { Text("Puente Animal") })
+            TopAppBar(title = { Text("Puente Animal version mediana") })
         }
         //Ajusta los espacios a utilizar
     ) { innerPadding ->
@@ -54,12 +54,20 @@ fun HomeScreen() {
                     .height(150.dp),
                 contentScale = ContentScale.Fit
             )
+            Image(
+                painter = painterResource(id = R.drawable.imagen_med),
+                contentDescription = "Imagen med para la app",
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(150.dp),
+                contentScale = ContentScale.Fit
+            )
         }
     }
 }
 
 @Preview(showBackground = true)
 @Composable
-fun HomeScreenPreview() {
-    HomeScreen()
+fun HomeScreenMedianaPreview() {
+    HomeScreenMediana()
 }
