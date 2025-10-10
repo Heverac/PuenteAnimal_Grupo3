@@ -9,8 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.puenteanimal_grupo3.ui.theme.PuenteAnimal_Grupo3Theme
-import com.example.puenteanimal_grupo3.ui.screens.HomeScreen
-import com.example.puenteanimal_grupo3.ui.screens.HomeScreen2
+import com.example.puenteanimal_grupo3.ui.screens.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
