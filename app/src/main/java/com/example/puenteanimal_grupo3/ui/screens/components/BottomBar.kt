@@ -4,7 +4,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Home
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.Pets
-import androidx.compose.material.icons.filled.Settings
+import androidx.compose.material.icons.filled.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.graphics.vector.ImageVector
@@ -24,7 +24,7 @@ fun BottomBar(navController: NavHostController) {
         Item("home",     "Inicio",   Icons.Filled.Home),
         Item("perfil",   "Perfil",   Icons.Filled.Person),
         Item("animales", "Animales", Icons.Filled.Pets),
-        Item("settings", "Settings", Icons.Filled.Settings)
+        Item("info", "Info", Icons.Filled.Info)
     )
 
     NavigationBar {
