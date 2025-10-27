@@ -11,8 +11,6 @@ Permite a los usuarios apadrinar animales rescatados, visualizar su información
 - **Profile Screen:** información básica del usuario (En este caso son datos estandar y no están asociado aun al login ni a algún registro) y formularia para actulizar esta información.  
 - **Info Screen:** sección con FAQ, contacto y cierre de sesión (Aun no está habilitado el funcionamiento de este botón).
 
-## 🧱 Estructura del Proyecto
-
 
 ## ⚙️ Tecnologías Usadas
 
