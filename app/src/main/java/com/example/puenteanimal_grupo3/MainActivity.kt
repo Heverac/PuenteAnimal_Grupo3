@@ -3,7 +3,6 @@ package com.example.puenteanimal_grupo3
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
@@ -20,6 +19,7 @@ import com.example.puenteanimal_grupo3.navigation.NavigationEvent
 import com.example.puenteanimal_grupo3.navigation.Screen
 import com.example.puenteanimal_grupo3.ui.theme.PuenteAnimal_Grupo3Theme
 import com.example.puenteanimal_grupo3.ui.screens.*
+import com.example.puenteanimal_grupo3.ui.screens.antiguo.HomeScreen2
 import com.example.puenteanimal_grupo3.viewmodel.MainViewModel
 import kotlinx.coroutines.flow.collectLatest
 
