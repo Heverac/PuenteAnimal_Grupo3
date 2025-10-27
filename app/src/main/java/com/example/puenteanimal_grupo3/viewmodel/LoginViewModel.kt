@@ -7,8 +7,12 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlin.collections.isNotEmpty
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
-class LoginViewModel {
+class LoginViewModel : ViewModel() {
     private val _estado = MutableStateFlow(LoginUIState())
 
     val estado : StateFlow<LoginUIState> = _estado
@@ -21,20 +25,28 @@ class LoginViewModel {
         _estado.update { it.copy(clave = valor, errores = it.errores.copy(clave = null)) }
     }
 
-    fun validar(): Boolean{
-        val estadoActual = _estado.value
-        val errores = LoginErrores(
-            usuario = if (!estadoActual.usuario.equals("user")) "Usuario incorrecto" else null,
-            clave = if (!estadoActual.clave.equals("1234")) "Clave incorrecta" else null
-        )
+    fun validar(onResult: (Boolean) -> Unit) {
+        viewModelScope.launch {
+            _estado.update { it.copy(isLoading = true) }
 
-        val hayErrrores = listOfNotNull(
-            errores.usuario,
-            errores.clave
-        ).isNotEmpty()
+            delay(2000)
 
-        _estado.update { it.copy( errores = errores) }
+            val estadoActual = _estado.value
+            val errores = LoginErrores(
+                usuario = if (!estadoActual.usuario.equals("user")) "Usuario incorrecto" else null,
+                clave = if (!estadoActual.clave.equals("1234")) "Clave incorrecta" else null
+            )
 
-        return !hayErrrores
+            val hayErrores = listOfNotNull(
+                errores.usuario,
+                errores.clave
+            ).isNotEmpty()
+
+            _estado.update { it.copy(errores = errores, isLoading = false) }
+
+            // 5. Devuelve resultado al composable
+            onResult(!hayErrores)
+        }
     }
+
 }
