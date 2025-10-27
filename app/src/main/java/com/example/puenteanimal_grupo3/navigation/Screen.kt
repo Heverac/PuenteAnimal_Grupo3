@@ -1,26 +1,21 @@
 package com.example.puenteanimal_grupo3.navigation
 //sealeda class para definir rutas tipo-safe
-sealed class Screen(val route: String) {
+import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Home
+import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.Pets
+import androidx.compose.material.icons.filled.Settings
 
-    //rutas simples sin argumentos son data object
+sealed class Screen(val route: String, val label: String? = null, val icon: ImageVector? = null) {
+    // No aparece en bottom bar:
+    data object Login    : Screen("login")
 
-
-    //Ruta a la pantalla de inicio
-    data object Home : Screen("home_page")
-    data object Profile : Screen("profile_page")
-    data object Settings : Screen("settings_page")
-
-    /** Ejemplo de una ruta a pantalla de detalles que requiere un itemId
-     *
-     * @param itemId el id del elemento a mostrar en la pantalla de detalles
-     */
-
-    data class Detail(val itemId : String) : Screen("detail_page/{itemId"){
-        fun buildRoute():String { //esta funcion da la ruta con el argumento
-            return route.replace("{itemId",itemId)
-        }
-    }
-
-
-
+    // Aparecen en bottom bar:
+    data object Home     : Screen("home",     "Inicio",    Icons.Filled.Home)
+    data object Profile  : Screen("perfil",   "Perfil",    Icons.Filled.Person)
+    data object Animales : Screen("animales", "Animales",  Icons.Filled.Pets)
+    data object Settings : Screen("settings", "Settings",  Icons.Filled.Settings)
 }
+
+val BottomNavItems = listOf(Screen.Home, Screen.Profile, Screen.Animales, Screen.Settings)
