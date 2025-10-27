@@ -29,7 +29,7 @@ class LoginViewModel : ViewModel() {
         viewModelScope.launch {
             _estado.update { it.copy(isLoading = true) }
 
-            delay(2000)
+            delay(3000)
 
             val estadoActual = _estado.value
             val errores = LoginErrores(
