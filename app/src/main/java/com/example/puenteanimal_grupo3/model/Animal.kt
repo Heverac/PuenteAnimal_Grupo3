@@ -1,7 +1,9 @@
 package com.example.puenteanimal_grupo3.model
 
+import androidx.annotation.DrawableRes
+
 data class Animal(
-    val id: Int,
     val nombre: String,
-    val edad: Int
+    @DrawableRes val fotoRes: Int,
+    val nota: String = ""
 )

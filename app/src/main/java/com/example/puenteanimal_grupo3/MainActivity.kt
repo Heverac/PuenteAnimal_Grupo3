@@ -3,39 +3,25 @@ package com.example.puenteanimal_grupo3
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.enableEdgeToEdge
-import androidx.compose.material3.Text
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.tooling.preview.Preview
-import com.example.puenteanimal_grupo3.ui.theme.PuenteAnimal_Grupo3Theme
-import com.example.puenteanimal_grupo3.ui.screens.HomeScreen
-import com.example.puenteanimal_grupo3.ui.screens.HomeScreen2
+import com.example.puenteanimal_grupo3.navigation.AppNavigation
+
+import com.example.puenteanimal_grupo3.ui.theme.AppTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
         setContent {
-            PuenteAnimal_Grupo3Theme {
-                HomeScreen2()
+            AppTheme {
+                AppNavigation()
             }
         }
     }
 }
 
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier
-    )
-}
 
-@Preview(showBackground = true)
-@Composable
-fun HomeScreenPreview() {
+/*
+fun GeneralPreview() {
     PuenteAnimal_Grupo3Theme {
-        HomeScreen2()
+
     }
-}
+}*/
