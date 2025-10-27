@@ -23,10 +23,16 @@ private val DarkColors = darkColorScheme(
 private val LightColors = lightColorScheme(
     primary = GreenPrimary,
     onPrimary = Color.White,
+    primaryContainer = GreenDark,
+
     secondary = OrangeAccent,
     onSecondary = Color.White,
+
     background = BeigeBackground,
-    onBackground = Color.Black
+    onBackground = Color(0xFF1C1C1C),
+
+    surface = BeigeBackground,          // fondo de cards/barras
+    onSurface = Color(0xFF1C1C1C)
 )
 
     /* Other default colors to override
@@ -37,7 +43,7 @@ private val LightColors = lightColorScheme(
     onTertiary = Color.White,
     onBackground = Color(0xFF1C1B1F),
     onSurface = Color(0xFF1C1B1F),
-    */
+
 
 
 @Composable
@@ -59,6 +65,15 @@ fun PuenteAnimal_Grupo3Theme(
 
     MaterialTheme(
         colorScheme = colorScheme,
+        typography = Typography,
+        content = content
+    )
+}*/
+
+@Composable
+fun AppTheme(content: @Composable () -> Unit) {
+    MaterialTheme(
+        colorScheme = LightColors,      // <- usa tus colores
         typography = Typography,
         content = content
     )

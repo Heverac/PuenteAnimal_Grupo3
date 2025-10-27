@@ -1,5 +1,8 @@
 package com.example.puenteanimal_grupo3.ui.screens
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -26,18 +29,13 @@ fun LoginScreen(
 ) {
     val estado by viewModelLogin.estado.collectAsState()
 
-    Column (
+    Column(
         Modifier
             .fillMaxSize()
             .padding(16.dp),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
         Scaffold(
-            topBar = {
-                CenterAlignedTopAppBar(
-                    title = { Text("Puente Animal") }
-                )
-            }
         ) { innerPadding ->
             Column(
                 modifier = Modifier
@@ -47,7 +45,7 @@ fun LoginScreen(
                 verticalArrangement = Arrangement.Center
             ) {
                 Image(
-                    painter = painterResource(id=R.drawable.logo),
+                    painter = painterResource(id = R.drawable.logo),
                     contentDescription = "Logo App",
                     modifier = Modifier
                         .fillMaxWidth()
@@ -63,6 +61,7 @@ fun LoginScreen(
                     value = estado.usuario,
                     onValueChange = viewModelLogin::onUsuarioChange,
                     label = { Text("Usuario") },
+                    enabled = !estado.isLoading,
                     isError = estado.errores.usuario != null,
                     supportingText = {
                         estado.errores.usuario?.let {
@@ -78,6 +77,7 @@ fun LoginScreen(
                     value = estado.clave,
                     onValueChange = viewModelLogin::onClaveChange,
                     label = { Text("Contraseña") },
+                    enabled = !estado.isLoading,
                     visualTransformation = PasswordVisualTransformation(),
                     isError = estado.errores.clave != null,
                     supportingText = {
@@ -92,21 +92,40 @@ fun LoginScreen(
 
                 Button(
                     onClick = {
-                        if (viewModelLogin.validar()) {
-                            navController.navigate(Screen.Home.route) {
-                                popUpTo(Screen.Login.route) { inclusive = true } // elimina login del back stack
-                                launchSingleTop = true
+                        viewModelLogin.validar { ok ->
+                            if (ok) {
+                                navController.navigate(Screen.Home.route) {
+                                    popUpTo(Screen.Login.route) { inclusive = true }
+                                    launchSingleTop = true
+                                }
                             }
+                            // si quieres, aquí podrías mostrar un snackbar cuando ok == false
                         }
                     },
-                    modifier = Modifier.fillMaxWidth()
+                    modifier = Modifier.fillMaxWidth(),
+                    enabled = !estado.isLoading // deshabilita mientras carga
                 ) { Text("Iniciar Sesión") }
 
+            }
+        }
+        AnimatedVisibility(
+            visible = estado.isLoading,
+            enter = fadeIn(),
+            exit = fadeOut()
+        ) {
+            Box(
+                Modifier
+                    .fillMaxSize()
+                    .background(MaterialTheme.colorScheme.background.copy(alpha = 0.6f)),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator()
             }
         }
     }
 }
 
+/*
 @Preview(name = "LoginScreen", widthDp = 360, heightDp = 800)
 @Composable
 fun PreviewLoginScreen(){
@@ -114,3 +133,4 @@ fun PreviewLoginScreen(){
     val navController = rememberNavController()
     LoginScreen(navController = navController, viewModel)
 }
+*/

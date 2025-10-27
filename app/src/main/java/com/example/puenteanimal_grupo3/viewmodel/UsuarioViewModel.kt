@@ -42,18 +42,42 @@ class UsuarioViewModel : ViewModel() {
             nombre = if (estadoActual.nombre.isBlank()) "Campo obligatorio" else null,
             correo = if (!estadoActual.correo.contains("@")) "Correo invalido" else null,
             clave = if (estadoActual.clave.length < 6) "Debe tener al menos 6 caracteres" else null,
-            direccion = if (estadoActual.direccion.isBlank()) "Campo obligatorio" else null
+            direccion = if (estadoActual.direccion.isBlank()) "Campo obligatorio" else null,
+            aceptaTerminos = if (!estadoActual.aceptaTerminos) "Debes aceptar los términos" else null
         )
+
+
 
         val hayErrrores = listOfNotNull(
             errores.nombre,
             errores.correo,
             errores.clave,
-            errores.direccion
+            errores.direccion,
+            errores.aceptaTerminos
         ).isNotEmpty()
 
         _estado.update { it.copy( errores = errores) }
 
         return !hayErrrores
     }
+    init {
+        // Precarga de ejemplo
+        _estado.update {
+            it.copy(
+                nombre = "Lucas Barrios",
+                correo = "lucas@example.com",
+                clave = "123456",
+                direccion = "Santiago, Chile",
+                aceptaTerminos = true
+            )
+        }
+    }
+
+    fun guardar(): Boolean {
+        val ok = validarFormulario()
+
+        return ok
+
+    }
+
 }
