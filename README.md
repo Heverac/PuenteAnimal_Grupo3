@@ -27,6 +27,7 @@ Aplicación móvil enfocada en la adopción y apadrinamiento de animales rescata
 4. Ejecutar la app con el botón **Run** en Android Studio.
 
 ## Capturas del APK firmado y archivo .jks
-*(Se adjuntarán posteriormente en esta sección cuando se generen los archivos de firma.)*
+<img width="1797" height="525" alt="image" src="https://github.com/user-attachments/assets/b6996e64-8084-4c71-8198-9ce1f44be862" />
+
 
 
