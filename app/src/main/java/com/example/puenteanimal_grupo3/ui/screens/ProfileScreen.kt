@@ -10,6 +10,7 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import com.example.puenteanimal_grupo3.viewmodel.UserSessionViewModel
 import com.example.puenteanimal_grupo3.viewmodel.UsuarioViewModel
 
 
@@ -19,11 +20,24 @@ import com.example.puenteanimal_grupo3.viewmodel.UsuarioViewModel
 
 
 fun ProfileScreen(
+    userSessionViewModel: UserSessionViewModel,
     viewModel: UsuarioViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() }
 ) {
     val estado by viewModel.estado.collectAsState()
-    val scope = rememberCoroutineScope()   //
+    val scope = rememberCoroutineScope()
+    val user = userSessionViewModel.currentUser
+
+    LaunchedEffect(user) {
+        user?.let {
+            viewModel.onNombreChange(it.nombre)
+            viewModel.onCorreoChange(it.email)
+            viewModel.onDireccionChange(it.direccion ?: "")
+            viewModel.onClaveChange("user123")
+            viewModel.onAceptarTerminosChange(true)
+        }
+    }
+
 
 
     Scaffold(

@@ -16,10 +16,11 @@ import com.example.puenteanimal_grupo3.ui.screens.LoginScreen
 import com.example.puenteanimal_grupo3.ui.screens.ProfileScreen
 import com.example.puenteanimal_grupo3.ui.screens.components.BottomBar
 import com.example.puenteanimal_grupo3.viewmodel.LoginViewModel
+import com.example.puenteanimal_grupo3.viewmodel.UserSessionViewModel
 
 
 @Composable
-fun AppNavigation() {
+fun AppNavigation(userSessionViewModel: UserSessionViewModel) {
     val navController = rememberNavController()
     val loginViewModel = LoginViewModel()
     val backStack by navController.currentBackStackEntryAsState()
@@ -36,7 +37,7 @@ fun AppNavigation() {
         ) {
             composable("login")    { LoginScreen(navController, loginViewModel) }
             composable("home")     { HomeScreen() }
-            composable("perfil")   { ProfileScreen() }
+            composable("perfil")   { ProfileScreen(userSessionViewModel = userSessionViewModel) }
             composable("animales") { AnimalesScreen() }
             composable("info") { InfoScreen() }
         }

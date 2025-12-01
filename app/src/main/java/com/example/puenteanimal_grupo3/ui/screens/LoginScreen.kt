@@ -20,12 +20,14 @@ import androidx.navigation.compose.rememberNavController
 import com.example.puenteanimal_grupo3.viewmodel.LoginViewModel
 import com.example.puenteanimal_grupo3.R
 import com.example.puenteanimal_grupo3.navigation.Screen
+import com.example.puenteanimal_grupo3.viewmodel.UserSessionViewModel
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LoginScreen(
     navController: NavController,
-    viewModelLogin: LoginViewModel
+    viewModelLogin: LoginViewModel,
+    userSessionViewModel: UserSessionViewModel
 ) {
     val estado by viewModelLogin.estado.collectAsState()
 
@@ -92,7 +94,7 @@ fun LoginScreen(
 
                 Button(
                     onClick = {
-                        viewModelLogin.validar { ok ->
+                        viewModelLogin.validar(userSessionViewModel = userSessionViewModel) { ok ->
                             if (ok) {
                                 navController.navigate(Screen.Home.route) {
                                     popUpTo(Screen.Login.route) { inclusive = true }
@@ -125,12 +127,15 @@ fun LoginScreen(
     }
 }
 
-/*
 @Preview(name = "LoginScreen", widthDp = 360, heightDp = 800)
 @Composable
-fun PreviewLoginScreen(){
+fun PreviewLoginScreen() {
     val viewModel = LoginViewModel()
     val navController = rememberNavController()
-    LoginScreen(navController = navController, viewModel)
+    val userSessionViewModel = UserSessionViewModel()
+    LoginScreen(
+        navController = navController,
+        viewModelLogin = viewModel,
+        userSessionViewModel = userSessionViewModel
+    )
 }
-*/

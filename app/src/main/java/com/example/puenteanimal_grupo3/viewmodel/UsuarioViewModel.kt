@@ -60,18 +60,7 @@ class UsuarioViewModel : ViewModel() {
 
         return !hayErrrores
     }
-    init {
-        // Precarga de ejemplo
-        _estado.update {
-            it.copy(
-                nombre = "Lucas Barrios",
-                correo = "lucas@example.com",
-                clave = "123456",
-                direccion = "Santiago, Chile",
-                aceptaTerminos = true
-            )
-        }
-    }
+
 
     fun guardar(): Boolean {
         val ok = validarFormulario()
