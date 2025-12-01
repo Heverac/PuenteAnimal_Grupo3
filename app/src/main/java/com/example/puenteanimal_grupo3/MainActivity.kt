@@ -5,6 +5,7 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.puenteanimal_grupo3.navigation.AppNavigation
+import com.example.puenteanimal_grupo3.ui.theme.AppTheme
 
 import com.example.puenteanimal_grupo3.viewmodel.UserSessionViewModel
 
@@ -12,13 +13,13 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-
+            AppTheme {
                 val userSessionViewModel: UserSessionViewModel = viewModel()
                 AppNavigation(userSessionViewModel = userSessionViewModel)
             }
         }
     }
-
+}
 
 
 /*
