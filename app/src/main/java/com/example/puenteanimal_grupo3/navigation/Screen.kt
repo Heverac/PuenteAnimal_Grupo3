@@ -11,6 +11,8 @@ sealed class Screen(val route: String, val label: String? = null, val icon: Imag
     // No aparece en bottom bar:
     data object Login    : Screen("login")
 
+    data object Start : Screen("Start")
+
     // Aparecen en bottom bar:
     data object Home     : Screen("home",     "Inicio",    Icons.Filled.Home)
     data object Profile  : Screen("perfil",   "Perfil",    Icons.Filled.Person)

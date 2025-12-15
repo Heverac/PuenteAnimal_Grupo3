@@ -1,8 +1,6 @@
 package com.example.puenteanimal_grupo3.navigation
 
 sealed class NavigationEvent {
-
-
     /** Evento para navegar a distintos destinos
      *
      * @param route Es el destino al que quieres navegar.
@@ -14,7 +12,6 @@ sealed class NavigationEvent {
      *
      * @param singleTop  Evita duplicar pantallas en la pila.
      */
-
     data class NavigateTo(
         val route:Screen, //recibe un objeto AppDestinations
         val popUpToRoute:Screen?=null, //tambien acepta un objeto AppDestination
@@ -33,10 +30,5 @@ sealed class NavigationEvent {
      * sea perfil volvera a home
      */
     object NavigateUp : NavigationEvent()
-
-
-
-
-
 
 }

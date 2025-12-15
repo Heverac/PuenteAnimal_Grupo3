@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
@@ -16,20 +17,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavHostController
 import com.example.puenteanimal_grupo3.R
-import com.example.puenteanimal_grupo3.model.Animal
+
 
 data class Animal(val nombre: String, val fotoRes: Int)
 
 val animalesDestacados = listOf(
     Animal("Capitán", R.drawable.perro1),
     Animal("Luna", R.drawable.gato1),
-    Animal("Milo",    R.drawable.perro2, "Juguetón"),
-    Animal("Nala",    R.drawable.loro,  "Cariñosa"),
-    Animal("Celeste",    R.drawable.oveja,  "Solitaria")
+    Animal("Milo", R.drawable.perro2),
+    Animal("Nala", R.drawable.loro),
+    Animal("Celeste", R.drawable.oveja)
 )
+
+
 @Composable
 fun AnimalCard(animal: Animal, modifier: Modifier = Modifier) {
     Column(
@@ -55,6 +59,7 @@ fun AnimalCard(animal: Animal, modifier: Modifier = Modifier) {
         )
     }
 }
+
 val avisosRefugio = listOf(
     "Campaña de vacunación este sábado 🩺",
     "Jornada de adopción - Plaza Central 🐶",
@@ -109,7 +114,7 @@ fun ImpactoBlock(
 
 
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavHostController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -155,10 +160,16 @@ fun HomeScreen() {
         }
         Spacer(Modifier.height(24.dp))
         Text(
-            text = "Próximamente: iniciar apadrinamiento aquí 🐾",
-            style = MaterialTheme.typography.bodySmall,
+            text = "Apadrína aquí 🐾",
+            style = MaterialTheme.typography.bodyMedium,
             color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.6f)
         )
+        Button(
+            onClick = { navController.navigate("apadrinar") }
+        ) {
+            Text("Apadrinar")
+        }
+
         Spacer(Modifier.height(16.dp))
         ImpactoBlock(totalAtencionesMes = 48)
 
@@ -166,10 +177,11 @@ fun HomeScreen() {
 
 }
 
-
+/*
 
 @Preview(showBackground = true)
 @Composable
 fun HomeScreenPreview(){
-    HomeScreen()
+    HomeScreen(navController: NavHostController)
 }
+ */

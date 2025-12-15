@@ -8,23 +8,38 @@ import kotlinx.coroutines.launch
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.*
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.unit.dp
+import com.example.puenteanimal_grupo3.data.SessionManager
+import com.example.puenteanimal_grupo3.viewmodel.UserSessionViewModel
 import com.example.puenteanimal_grupo3.viewmodel.UsuarioViewModel
 
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-
-
 fun ProfileScreen(
+    userSessionViewModel: UserSessionViewModel,
     viewModel: UsuarioViewModel = androidx.lifecycle.viewmodel.compose.viewModel(),
     snackbarHostState: SnackbarHostState = remember { SnackbarHostState() }
 ) {
     val estado by viewModel.estado.collectAsState()
-    val scope = rememberCoroutineScope()   //
+    val scope = rememberCoroutineScope()
+    val user = userSessionViewModel.currentUser
 
+    val context = LocalContext.current
+    val sessionManager = remember { SessionManager(context) }
+
+    LaunchedEffect(user) {
+        user?.let {
+            viewModel.onNombreChange(it.nombre)
+            viewModel.onCorreoChange(it.email)
+            viewModel.onDireccionChange(it.direccion ?: "")
+            viewModel.onClaveChange("user123")
+            viewModel.onAceptarTerminosChange(true)
+        }
+    }
 
     Scaffold(
         snackbarHost = { SnackbarHost(snackbarHostState) },
@@ -101,7 +116,6 @@ fun ProfileScreen(
                 )
             }
 
-
             Button(
                 onClick = {
                     val ok = viewModel.guardar()
@@ -115,7 +129,6 @@ fun ProfileScreen(
             ) {
                 Text("Guardar")
             }
-
         }
     }
 }
