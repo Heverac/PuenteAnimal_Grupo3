@@ -19,4 +19,8 @@ class UserSessionViewModel : ViewModel() {
     fun logout() {
         currentUser = null
     }
+    fun updateUser(usuario: UsuarioRemote) {
+        currentUser = usuario
+    }
+
 }

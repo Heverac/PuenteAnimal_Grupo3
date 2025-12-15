@@ -17,21 +17,23 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import com.example.puenteanimal_grupo3.R
-import com.example.puenteanimal_grupo3.model.Animal
+
 
 data class Animal(val nombre: String, val fotoRes: Int)
 
 val animalesDestacados = listOf(
     Animal("Capitán", R.drawable.perro1),
     Animal("Luna", R.drawable.gato1),
-    Animal("Milo",    R.drawable.perro2, "Juguetón"),
-    Animal("Nala",    R.drawable.loro,  "Cariñosa"),
-    Animal("Celeste",    R.drawable.oveja,  "Solitaria")
+    Animal("Milo", R.drawable.perro2),
+    Animal("Nala", R.drawable.loro),
+    Animal("Celeste", R.drawable.oveja)
 )
+
+
 @Composable
 fun AnimalCard(animal: Animal, modifier: Modifier = Modifier) {
     Column(
@@ -57,6 +59,7 @@ fun AnimalCard(animal: Animal, modifier: Modifier = Modifier) {
         )
     }
 }
+
 val avisosRefugio = listOf(
     "Campaña de vacunación este sábado 🩺",
     "Jornada de adopción - Plaza Central 🐶",

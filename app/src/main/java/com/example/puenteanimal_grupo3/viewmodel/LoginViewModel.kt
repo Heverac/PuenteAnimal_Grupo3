@@ -48,7 +48,7 @@ class LoginViewModel : ViewModel() {
                     )
                 }
 
-                onResult(true)   // avisar a la screen que todo salió bien
+                onResult(true)
 
             } catch (e: HttpException) {
                 // errores HTTP (401, 500, etc.)

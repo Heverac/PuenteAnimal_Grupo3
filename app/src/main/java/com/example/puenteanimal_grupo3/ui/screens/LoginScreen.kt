@@ -104,7 +104,7 @@ fun LoginScreen(
                     onClick = {
                         viewModelLogin.validar(userSessionViewModel = userSessionViewModel) { ok ->
                             if (ok) {
-                                // 👇 aquí guardamos el "logueado"
+
                                 coroutineScope.launch {
                                     sessionManager.saveLogin()
 

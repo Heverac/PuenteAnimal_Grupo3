@@ -27,7 +27,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
-import com.example.puenteanimal_grupo3.model.Animal
+import com.example.puenteanimal_grupo3.model.AnimalRemote
 
 
 
@@ -35,10 +35,11 @@ import com.example.puenteanimal_grupo3.model.Animal
 @Composable
 fun ApadrinarScreen(
     navController: NavHostController,
-    onAgregarApadrinado: (Animal, String) -> Unit
+    animales: List<AnimalRemote>,
+    onAgregarApadrinado: (AnimalRemote, String) -> Unit
 ) {
     var expanded by remember { mutableStateOf(false) }
-    var selectedAnimal by remember { mutableStateOf<Animal?>(null) }
+    var selectedAnimal by remember { mutableStateOf<AnimalRemote?>(null) }
     var montoAporte by rememberSaveable { mutableStateOf("") }
 
     Column(
@@ -48,7 +49,6 @@ fun ApadrinarScreen(
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.Start
     ) {
-
         Text(
             text = "Apadrinar animal",
             style = MaterialTheme.typography.titleLarge
@@ -56,22 +56,19 @@ fun ApadrinarScreen(
 
         Spacer(modifier = Modifier.height(16.dp))
 
-
         Box {
             OutlinedButton(
                 onClick = { expanded = true },
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Text(
-                    text = selectedAnimal?.nombre ?: "Selecciona un animal"
-                )
+                Text(text = selectedAnimal?.nombre ?: "Selecciona un animal")
             }
 
             DropdownMenu(
                 expanded = expanded,
                 onDismissRequest = { expanded = false }
             ) {
-                animalesDestacados.forEach { animal ->
+                animales.forEach { animal ->
                     DropdownMenuItem(
                         text = { Text(animal.nombre) },
                         onClick = {

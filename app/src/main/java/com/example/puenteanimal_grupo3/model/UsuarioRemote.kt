@@ -8,7 +8,8 @@ data class UsuarioRemote(
     val email: String,
     val password:String,
     val direccion: String?,
-    val admin: Boolean
+    val admin: Boolean,
+    val idAnimalesApadrinados: List<Int> = emptyList()
 )
 
 
