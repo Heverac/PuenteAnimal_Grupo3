@@ -1,29 +1,33 @@
 # Puente Animal 🐾
 
-Aplicación móvil desarrollada en Kotlin.  
-Permite a los usuarios apadrinar animales rescatados, visualizar su información y gestionar su perfil.
+Aplicación móvil enfocada en la adopción y apadrinamiento de animales rescatados, desarrollada con **Kotlin** y **Jetpack Compose**.
 
-## 🚀 Funcionalidades
+## Integrantes
+- Hernán Vera
+- Benjamín Donoso
 
-- **Inicio de sesión** y acceso a la app, en este caso aun no contamos con registro de usuario por lo que en esta etapa se ingresa con el usuario "user" identificado con la contraseña "1234".  
-- **Home Screen:** vista principal con mensajes informativos. Se implementará un botón que lleve a un formulario de apadrinamiento.  
-- **Animales Screen:** muestra los animales apadrinados o un mensaje si aún no hay. Se implementará un botón que lleve a un formulario de apadrinamiento.
-- **Profile Screen:** información básica del usuario (En este caso son datos estandar y no están asociado aun al login ni a algún registro) y formularia para actulizar esta información.  
-- **Info Screen:** sección con FAQ, contacto y cierre de sesión (Aun no está habilitado el funcionamiento de este botón).
+## Funcionalidades principales
+- Inicio de sesión con persistencia de usuario.
+- Visualización de animales destacados y disponibles para apadrinar.
+- Agregado y gestión de animales apadrinados.
+- Pantalla de perfil con datos obtenidos desde API externa.
+- Navegación con Bottom Navigation Bar.
+- Uso de Material 3, Scaffold y arquitectura con ViewModel.
 
+## Endpoints utilizados (API Usuarios)
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| POST | /usuarios/login | Validación de credenciales y respuesta con los datos del usuario |
+| GET | /usuarios/{id} | Obtiene información del usuario autenticado |
 
-## ⚙️ Tecnologías Usadas
+## Pasos para ejecutar el proyecto
+1. Clonar el repositorio y abrir en Android Studio.
+2. Ejecutar el microservicio de usuarios (puerto 8080) con su base de datos de mySQL (Xampp).
+3. Modificar la variable BASE_URL en caso de usar una IP distinta.
+4. Ejecutar la app con el botón **Run** en Android Studio.
 
-- **Kotlin**
-- **Jetpack Compose**
-- **Navigation Component**
-- **MVVM Architecture**
-- **Material 3**
+## Capturas del APK firmado y archivo .jks
+<img width="1797" height="525" alt="image" src="https://github.com/user-attachments/assets/b6996e64-8084-4c71-8198-9ce1f44be862" />
 
-## 📱 Estado Actual
-
-✅ Navegación funcional  
-✅ Diseño base de pantallas  
-🔜 Formularios, conexión a backend y funcionalidad de todos los botones.
 
 
