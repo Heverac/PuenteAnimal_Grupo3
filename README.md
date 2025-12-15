@@ -31,5 +31,6 @@ Aplicación móvil enfocada en la adopción y apadrinamiento de animales rescata
 ## Capturas del APK firmado y archivo .jks
 <img width="1797" height="525" alt="image" src="https://github.com/user-attachments/assets/b6996e64-8084-4c71-8198-9ce1f44be862" />
 
+<img width="762" height="142" alt="image" src="https://github.com/user-attachments/assets/ff77f12d-39e4-4079-af10-244c170d26a6" />
 
 
